@@ -1,0 +1,57 @@
+﻿@model App.Model.Product
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="row">
+    <!--page header-->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"]</h1>
+    </div>
+    <!--end page header-->
+</div>
+<!-- row -->
+<div class="row">
+    <div class="col-lg-12">
+        <!-- Form Elements -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Edit Product
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <form role="form">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Id)
+
+
+                                <div class="form-group">
+                                    <label>Product Name</label>
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Price</label>
+                                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Update Product</button>
+                            </form>
+                        }
+                        <p>
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- End Form Elements -->
+    </div>
+</div>
+<!-- end row -->
