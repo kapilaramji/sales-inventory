@@ -25,21 +25,14 @@
                                 <th>
                                     Quantity (Kg)
                                 </th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-
                                 <tr>
                                     <td>@Html.DisplayFor(modelItem => item.Product.Name)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
-                                    <td>
-                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.Quantity)</td>                                 
                                 </tr>
                             }
 
@@ -48,6 +41,9 @@
                 </div>
                 <p>
                     @Html.ActionLink("Add Stock", "Add")
+                </p>
+                <p>
+                    @Html.ActionLink("Remove Stock", "Remove")
                 </p>
             </div>
         </div>

@@ -11,6 +11,7 @@ namespace WebApplication1.Models
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Inventory> Inventory { get; set; }
+        public DbSet<Sale> Sales { get; set; }
     }
 
 }

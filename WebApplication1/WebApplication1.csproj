@@ -210,6 +210,10 @@
     <Compile Include="Migrations\201705300857495_Init.Designer.cs">
       <DependentUpon>201705300857495_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705310653216_sale.cs" />
+    <Compile Include="Migrations\201705310653216_sale.Designer.cs">
+      <DependentUpon>201705310653216_sale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -279,11 +283,10 @@
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Inventory\Create.cshtml" />
-    <Content Include="Views\Inventory\Delete.cshtml" />
+    <Content Include="Views\Inventory\Add.cshtml" />
     <Content Include="Views\Inventory\Details.cshtml" />
-    <Content Include="Views\Inventory\Edit.cshtml" />
     <Content Include="Views\Inventory\Index.cshtml" />
+    <Content Include="Views\Inventory\Remove.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -312,6 +315,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705300857495_Init.resx">
       <DependentUpon>201705300857495_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705310653216_sale.resx">
+      <DependentUpon>201705310653216_sale.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
