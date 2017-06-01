@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using App.Model;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using App.Model;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -16,9 +13,9 @@ namespace WebApplication1.Controllers
         private MainDBContext db = new MainDBContext();
 
         // GET: Sales
-        public ActionResult Index()
+        public ActionResult Index() 
         {
-            var sales = db.Sales.Include(s => s.Product);
+            var sales = db.Sales.Include(s => s.Product).OrderByDescending(s => s.SaleDate);
             return View(sales.ToList());
         }
 
@@ -38,24 +35,34 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Sales/Create
-        public ActionResult Create()
+        public ActionResult Add()
         {
             ViewBag.ProductId = new SelectList(db.Products, "Id", "Name");
             return View();
         }
 
         // POST: Sales/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ProductId,Quantity")] Sale sale)
+        public ActionResult Add([Bind(Include = "Id,ProductId,Quantity")] Sale sale)
         {
             if (ModelState.IsValid)
             {
-                db.Sales.Add(sale);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                Inventory productInventory = db.Inventory.Where(p => p.ProductId == sale.ProductId).FirstOrDefault<Inventory>();
+                if (productInventory.Quantity >= sale.Quantity)
+                {
+                    // add sale
+                    sale.SaleDate = DateTime.Now;
+                    db.Sales.Add(sale);
+                    // reduce stock
+                    productInventory.Quantity -= sale.Quantity;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    // Error- not enough stock
+                }
             }
 
             ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", sale.ProductId);
