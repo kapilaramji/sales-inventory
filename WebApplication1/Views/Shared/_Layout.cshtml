@@ -42,32 +42,28 @@
                         </div>
                         <!--end user image section-->
                     </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Home")" class="elements">
+                            <span><i class="fa fa-dashboard fa-fw"></i> Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Products")" class="elements">
+                            <span><i class="fa fa-dashboard fa-fw"></i> Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Inventory")" class="elements">
+                            <span><i class="fa fa-dashboard fa-fw"></i> Inventory</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Sales")" class="elements">
+                            <span><i class="fa fa-dashboard fa-fw"></i> Sales</span>
+                        </a>
+                    </li>
 
-                    <li class="selected">
-                        <a asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="/Products/"><i class="fa fa-bar-chart-o fa-fw"></i> Products</a>
-                    </li>
-                    <li>
-                        <a href="/Inventory/"><i class="fa fa-flask fa-fw"></i>Inventory</a>
-                    </li>
-                    <li>
-                        <a href="/Sales/"><i class="fa fa-table fa-fw"></i>Sales</a>
-                    </li>
-
-                    <li class="sidebar-search">
-                        <!-- search section-->
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                        <!--end search section-->
-                    </li>
+                    
 
                 </ul>
                 <!-- end side-menu -->

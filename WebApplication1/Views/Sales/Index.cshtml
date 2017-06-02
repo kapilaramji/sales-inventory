@@ -32,33 +32,36 @@
                                     Quantity
                                 </th>
                                 <th>
-                                    Income
+                                    Amount (Rs)
                                 </th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
+                            @{ 
+                                int i = 1;
+                            }
                             @foreach (var item in Model)
                             {
 
                                 <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                    <td>@i</td>
                                     <td>@Html.DisplayFor(modelItem => item.Product.Name)</td>
                                     <td>@Html.DisplayFor(modelItem => item.SaleDate)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
-                                    <td></td>
+                                    <td>@Html.DisplayFor(modelItem => item.Amount)</td>
                                     <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
                                     </td>
                                 </tr>
+                                i++;
                             }
 
                         </tbody>
                     </table>
                 </div>
                 <p>
-                    @Html.ActionLink("Add Product", "Add")
+                    @Html.ActionLink("Add Sale", "Add")
                 </p>
             </div>
         </div>
